@@ -1,0 +1,70 @@
+/**
+ * Variables
+ *
+ */
+
+
+/*=======================================================
+ Table of Contents:
+ –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  1.0 OVERLAY
+  2.0 MAIN IMAGE
+  3.0 CONTENT
+  =======================================================*/
+
+/*==================================================================================
+  1.0 Overlay
+==================================================================================*/
+
+#black-overlay{
+  display: block;
+  z-index: 98;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $translucent-black;
+  @include element_hidden;
+  transition: opacity .3s ease-in-out;
+  &.visible{
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/*==================================================================================
+  2.0 MAIN IMAGE
+==================================================================================*/
+.header-image{
+  position: relative;
+  figure{
+    width: 100vw;
+    height: 640px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include mobile{
+      height: 240px;
+    }
+  }
+  h1{
+    @include absolute_center();
+    color: $white;
+    width: 100%;
+    padding: 0 5%;
+    text-align: center;
+  }
+}
+
+
+/*==================================================================================
+  3.0 CONTENT
+==================================================================================*/
+main{
+  margin: 60px auto 0;
+  width: 90%;
+  max-width: 968px;
+  @include mobile{
+    margin-top: $header_height__mobile;
+  }
+}

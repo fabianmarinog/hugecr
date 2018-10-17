@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    head
+        title HUGE NavExercise
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        link(rel='stylesheet', href='/styles/main.css')
+        link(href='/assets/images/favicon.ico', rel='icon')
+    body
+        #black-overlay
+        header#site-header
+            a.header-logo(href="/")
+                img(src="assets/images/HUGE-white.png" width="60")
+            a.burger-menu(href="#" role="button")
+                div.burger
+                div.cross
+                p.hidden Toggle Burger Menu
+            nav(aria-label='Huge')
+                ul#menu-bar(role='menubar', aria-label='Huge')
+                    each val in menu
+                        each primary in val
+                            li
+                                a(class=primary.submenu !== undefined ? 'primary-link has-submenu' : 'primary-link', role='menuitem', aria-haspopup= primary.submenu !== undefined ? 'true' : 'false', aria-expanded='false', href='#', tabindex= primary.submenu !== undefined ? "-1" : "0" )= primary.item
+                                if primary.submenu !== undefined
+                                    ul(role='menu', aria-label=primary.item).submenu
+                                        each secondary, index in primary.submenu
+                                            li(role='none')
+                                                a.secondary-link(role='menuitem', href='#', tabindex='-1')= secondary
+                p.copyright.hidden-desktop ©2018 Huge. All Rights Reserved.
+        - var uvp = "Get paid for <br> giving a shit.";
+        section.header-image
+            h1.hidden-mobile !{uvp}
+            figure(style="background-image: url('/assets/images/background-image.jpg'); ")
+                figcaption.hidden People working at an office
+
+        main(role="main")
+            h2.hidden-desktop !{uvp}
+            p Lipsum dolor sit amet, consectetur adipiscing elit. Proin nec congue odio. Phasellus nisi erat, posuere ac risus id, placerat tincidunt ante. Vestibulum facilisis, leo ut ultricies tincidunt, nibh libero blandit justo, non rhoncus magna ipsum eu risus. Integer efficitur, lectus in porttitor mollis, ante quam scelerisque nisi, vitae venenatis ante mi vel mauris. Maecenas sagittis lectus quis nisi euismod, at tincidunt elit commodo. Quisque eget mauris purus. Ut eget massa consequat, consequat sapien sit amet, consequat magna. Pellentesque erat justo, vehicula nec sapien in, mollis facilisis erat. Duis tincidunt, enim eget viverra sagittis, justo eros volutpat nisi, id scelerisque massa dolor nec mauris. Curabitur libero eros, suscipit ut turpis vel, vulputate volutpat lacus.
+    script(src='app.js')

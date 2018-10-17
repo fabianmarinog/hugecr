@@ -1,0 +1,262 @@
+/**
+ * Variables
+ */
+
+
+/*=======================================================
+ Table of Contents:
+ –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  1.0 HEADER [Shared Styles]
+  2.0 HEADER [mobile]
+  =======================================================*/
+
+/*==================================================================================
+  1.0 Header [Shared Styles]
+==================================================================================*/
+header{
+  position: relative;
+  z-index: 99;
+  width: 100vw;
+  background-color: $magenta;
+  padding: 0 $nav_spacing;
+  display: flex;
+  align-items: center;
+  color: $white;
+  font-family: $secondary-font;
+  a{
+    display: block;
+    color: inherit;
+    font-family: inherit;
+    transition: all .3s ease-in-out;
+  }
+}
+
+/*==================================================================================
+  2.0 Header [Desktop]
+==================================================================================*/
+@include desktop{
+  header{
+    nav{
+      //width: calc( 100% - #{ ($nav_spacing * 3) + 60px } );
+      margin-left: $nav_spacing * 2;
+      ul#menu-bar{
+        display: flex;
+        //PARENT
+        >li{
+          position: relative;
+          >a{
+            padding: 0 $nav_spacing;
+            font: 21px/#{$nav_spacing * 3} $secondary-font;
+            height: $nav_spacing * 3;
+            &:hover{
+              color: $magenta;
+              background-color: $white;
+            }
+          }
+
+          &.opened > a{
+            color: $magenta;
+            background-color: $white;
+          }
+
+          //SUBMENU
+          >ul{
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            background-color: $white;
+            padding: ($nav_spacing / 2) 0;
+            transition: opacity .3s ease-in;
+            > li{
+              a{
+                padding: 0 $nav_spacing;
+                white-space: nowrap;
+                font: 16px/48px $primary-font;
+                color: $black;
+                &:hover{
+                  background-color: $light-gray;
+                  color: $magenta;
+                }
+              }
+            }
+          }
+
+          //ON HOVER
+          &.opened{
+            >ul{
+              opacity: 1;
+              pointer-events: auto;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+/*==================================================================================
+  3.0 Header [Mobile]
+==================================================================================*/
+@include mobile {
+  header {
+    top: 0;
+    position: fixed;
+    padding: 0;
+    height: $header_height__mobile;
+
+    a.header-logo{
+      top: 20px;
+      left: -100%;
+      img{
+        margin-left: $nav_spacing;
+        display: block;
+        width: 50px !important;
+        height: auto
+      }
+    }
+
+    a.burger-menu{
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: $nav_spacing * 3;
+      height: 60px;
+      .burger,
+      .cross{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $nav_spacing * 3;
+        height: 60px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        pointer-events: none;
+        transition: scale 3s ease-in-out;
+      }
+      .burger{
+        background-image: url("../assets/images/toggle-open.svg");
+        transform: scaleX(1);
+        transition-delay: .3s;
+      }
+      .cross{
+        background-image: url("../assets/images/toggle-close.svg");
+        transform: scaleX(0);
+        transition-delay: .0s;
+      }
+
+    }
+
+    //INITIAL STATE [LOGO AND BURGER]
+    a.burger-menu,
+    a.header-logo{
+      position: absolute;
+    }
+
+
+    nav{
+      position: fixed;
+      top: $header_height__mobile;
+      left: -100%;
+      width: 90%;
+      height: calc(100vh - #{$header_height__mobile});
+      background-color: $white;
+      transition: left .3s ease-in-out;
+      >ul {
+        position: relative;
+        padding: ($nav_spacing / 2) 0;
+        height: calc(100vh - #{$header_height__mobile + ($nav_spacing * 3)});
+        overflow-x: hidden;
+        overflow-y: scroll;
+        > li {
+          > a{
+            position: relative;
+            padding-left: $nav_spacing;
+            font: 21px/#{$nav_spacing * 3} $secondary-font;
+            height: $nav_spacing * 3;
+            color: $black;
+            &:hover{
+              background-color: $light-gray;
+            }
+            &.has-submenu:after{
+              content: "";
+              display: block;
+              width: 20px;
+              height: 13px;
+              @include vertical_center;
+              right: $nav_spacing / 2;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+              background-image: url("../assets/images/arrow-down.svg");
+              transition: all .3s ease-in-out;
+            }
+          }
+          > ul{
+            display: none;
+            > li{
+              a{
+                padding: 0 $nav_spacing;
+                white-space: nowrap;
+                font: 16px/48px $primary-font;
+                color: $black;
+                &:hover{
+                  background-color: $light-gray;
+                  color: $magenta;
+                }
+              }
+            }
+          }
+
+          &.opened {
+            > a.has-submenu::after{
+              transform: translateY(-50%)
+                         rotate(180deg);
+            }
+            > ul{
+              display: block;
+            }
+          }
+
+        }
+      }
+    }
+
+    p.copyright{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 90%;
+      background-color: $white;
+      color: $black;
+      font: 12px/#{$nav_spacing * 2} "Helvetica Neue","Arial", sans-serif ;
+      padding-left: $nav_spacing;
+    }
+
+    //OPENED STATE [LOGO AND BURGER]
+    &.opened{
+      a.header-logo{
+        left: 0;
+      }
+      a.burger-menu{
+        left: calc(100% - #{$nav_spacing * 3} );
+        .burger{
+          transform: scaleX(0);
+          transition-delay: .0s;
+        }
+        .cross{
+          transform: scaleX(1);
+          transition-delay: .3s;
+        }
+      }
+
+      nav {
+        left: 0;
+      }
+
+    }
+
+
+  }
+}

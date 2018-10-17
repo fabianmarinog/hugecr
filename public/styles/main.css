@@ -1,12 +1,427 @@
-@import "fonts.css";
+@charset "UTF-8";
+/**
+ * Variables
+ *
+ *
+ */
+/*=======================================================
+ Table of Contents:
+ –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  1.0 COLORS
+    1.1 COLOR PALETTE
+  2.0 FONTS
+  3.0 spacing
+  4.0 Mixins
+  5.0 HELPERS
+  =======================================================*/
+/*==================================================================================
+  1.0 Colors
+==================================================================================*/
+/*===================
+  1.1 Colors Palette
+=====================*/
+/*==================================================================================
+  2.0 Fonts
+==================================================================================*/
+/*==================================================================================
+  3.0 Spacing
+==================================================================================*/
+/*==================================================================================
+  4.0 Mixins
+==================================================================================*/
+/* BY BREAKPOINTS
+/––––––––––––––––––––––––*/
+/* ABSOLUTE POSITIONING
+/––––––––––––––––––––––––*/
+/*==================================================================================
+  5.0 Helpers
+==================================================================================*/
+.hidden {
+  display: none; }
+
+@media (min-width: 768px) {
+  .hidden-desktop {
+    display: none; } }
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none; } }
+
+html, body {
+  font-family: "Galaxie", sans-serif;
+  overflow-x: hidden; }
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit; }
+
+a {
+  text-decoration: none; }
+  a:focus, a:hover {
+    outline: 0; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
 
 body {
-  background: #ec008c;
-  color: #fff;
-}
+  line-height: 1; }
 
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: ''; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: 'HUGEAvantGardeBold';
+  src: url("../assets/fonts/huge_agb_v5-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/huge_agb_v5-webfont.woff") format("woff"), url("../assets/fonts/huge_agb_v5-webfont.ttf") format("truetype"), url("../assets/fonts/huge_agb_v5-webfont.svg#svgFontName") format("svg"); }
+
+@font-face {
+  font-family: 'Galaxie';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/GalaxieCopernicus-Book.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/GalaxieCopernicus-Book.woff") format("woff"), url("../assets/fonts/GalaxieCopernicus-Book.svg#svgFontName") format("svg"); }
+
+@font-face {
+  font-family: 'Galaxie';
+  font-style: italic;
+  font-weight: normal;
+  src: url("../assets/fonts/GalaxieCopernicus-BookItalic.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/GalaxieCopernicus-BookItalic.woff") format("woff"), url("../assets/fonts/GalaxieCopernicus-BookItalic.svg#svgFontName") format("svg"); }
+
+/**
+ * Typography
+ *
+ *
+ */
+/*=======================================================
+ Table of Contents:
+ –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  1.0 HEADLINES
+  2.0 PARAGRAPHS
+  =======================================================*/
+/*==================================================================================
+  1.0 Headlines
+==================================================================================*/
 h1 {
-  font: 20vmin/1 HUGEAvantGardeBold;
-  letter-spacing: -0.06em;
-  text-align: center;
-}
+  font: 120px/132px "HUGEAvantGardeBold", sans-serif;
+  text-align: center; }
+
+h2 {
+  margin: 50px 0;
+  font: 44px/48px "HUGEAvantGardeBold", sans-serif; }
+
+/*==================================================================================
+  2.0 Paragraphs
+==================================================================================*/
+p {
+  font: 24px/36px "Galaxie", sans-serif; }
+  @media (max-width: 767px) {
+    p {
+      font: 14px/24px "Galaxie", sans-serif; } }
+
+/**
+ * Variables
+ *
+ *
+ */
+/*=======================================================
+ Table of Contents:
+ –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  1.0 HEADER [Shared Styles]
+  2.0 HEADER [mobile]
+  =======================================================*/
+/*==================================================================================
+  1.0 Header [Shared Styles]
+==================================================================================*/
+header {
+  position: relative;
+  z-index: 99;
+  width: 100vw;
+  background-color: #ec008c;
+  padding: 0 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ffffff;
+  font-family: "HUGEAvantGardeBold", sans-serif; }
+  header a {
+    display: block;
+    color: inherit;
+    font-family: inherit;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out; }
+
+/*==================================================================================
+  2.0 Header [Desktop]
+==================================================================================*/
+@media (min-width: 768px) {
+  header nav {
+    margin-left: 48px; }
+    header nav ul#menu-bar {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+      header nav ul#menu-bar > li {
+        position: relative; }
+        header nav ul#menu-bar > li > a {
+          padding: 0 24px;
+          font: 21px/72px "HUGEAvantGardeBold", sans-serif;
+          height: 72px; }
+          header nav ul#menu-bar > li > a:hover {
+            color: #ec008c;
+            background-color: #ffffff; }
+        header nav ul#menu-bar > li.opened > a {
+          color: #ec008c;
+          background-color: #ffffff; }
+        header nav ul#menu-bar > li > ul {
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+          background-color: #ffffff;
+          padding: 12px 0;
+          -webkit-transition: opacity .3s ease-in;
+          transition: opacity .3s ease-in; }
+          header nav ul#menu-bar > li > ul > li a {
+            padding: 0 24px;
+            white-space: nowrap;
+            font: 16px/48px "Galaxie", sans-serif;
+            color: #000000; }
+            header nav ul#menu-bar > li > ul > li a:hover {
+              background-color: #eee;
+              color: #ec008c; }
+        header nav ul#menu-bar > li.opened > ul {
+          opacity: 1;
+          pointer-events: auto; } }
+
+/*==================================================================================
+  3.0 Header [Mobile]
+==================================================================================*/
+@media (max-width: 767px) {
+  header {
+    top: 0;
+    position: fixed;
+    padding: 0;
+    height: 60px; }
+    header a.header-logo {
+      top: 20px;
+      left: -100%; }
+      header a.header-logo img {
+        margin-left: 24px;
+        display: block;
+        width: 50px !important;
+        height: auto; }
+    header a.burger-menu {
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 72px;
+      height: 60px; }
+      header a.burger-menu .burger,
+      header a.burger-menu .cross {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 72px;
+        height: 60px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        pointer-events: none;
+        -webkit-transition: scale 3s ease-in-out;
+        transition: scale 3s ease-in-out; }
+      header a.burger-menu .burger {
+        background-image: url("../assets/images/toggle-open.svg");
+        -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+        -webkit-transition-delay: .3s;
+                transition-delay: .3s; }
+      header a.burger-menu .cross {
+        background-image: url("../assets/images/toggle-close.svg");
+        -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+        -webkit-transition-delay: .0s;
+                transition-delay: .0s; }
+    header a.burger-menu,
+    header a.header-logo {
+      position: absolute; }
+    header nav {
+      position: fixed;
+      top: 60px;
+      left: -100%;
+      width: 90%;
+      height: calc(100vh - 60px);
+      background-color: #ffffff;
+      -webkit-transition: left .3s ease-in-out;
+      transition: left .3s ease-in-out; }
+      header nav > ul {
+        position: relative;
+        padding: 12px 0;
+        height: calc(100vh - 132px);
+        overflow-x: hidden;
+        overflow-y: scroll; }
+        header nav > ul > li > a {
+          position: relative;
+          padding-left: 24px;
+          font: 21px/72px "HUGEAvantGardeBold", sans-serif;
+          height: 72px;
+          color: #000000; }
+          header nav > ul > li > a:hover {
+            background-color: #eee; }
+          header nav > ul > li > a.has-submenu:after {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 13px;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+            z-index: 3;
+            right: 12px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-image: url("../assets/images/arrow-down.svg");
+            -webkit-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out; }
+        header nav > ul > li > ul {
+          display: none; }
+          header nav > ul > li > ul > li a {
+            padding: 0 24px;
+            white-space: nowrap;
+            font: 16px/48px "Galaxie", sans-serif;
+            color: #000000; }
+            header nav > ul > li > ul > li a:hover {
+              background-color: #eee;
+              color: #ec008c; }
+        header nav > ul > li.opened > a.has-submenu::after {
+          -webkit-transform: translateY(-50%) rotate(180deg);
+                  transform: translateY(-50%) rotate(180deg); }
+        header nav > ul > li.opened > ul {
+          display: block; }
+    header p.copyright {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 90%;
+      background-color: #ffffff;
+      color: #000000;
+      font: 12px/48px "Helvetica Neue", "Arial", sans-serif;
+      padding-left: 24px; }
+    header.opened a.header-logo {
+      left: 0; }
+    header.opened a.burger-menu {
+      left: calc(100% - 72px); }
+      header.opened a.burger-menu .burger {
+        -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+        -webkit-transition-delay: .0s;
+                transition-delay: .0s; }
+      header.opened a.burger-menu .cross {
+        -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+        -webkit-transition-delay: .3s;
+                transition-delay: .3s; }
+    header.opened nav {
+      left: 0; } }
+
+/**
+ * Variables
+ *
+ *
+ */
+/*=======================================================
+ Table of Contents:
+ –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  1.0 OVERLAY
+  2.0 MAIN IMAGE
+  3.0 CONTENT
+  =======================================================*/
+/*==================================================================================
+  1.0 Overlay
+==================================================================================*/
+#black-overlay {
+  display: block;
+  z-index: 98;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out; }
+  #black-overlay.visible {
+    opacity: 1;
+    pointer-events: auto; }
+
+/*==================================================================================
+  2.0 MAIN IMAGE
+==================================================================================*/
+.header-image {
+  position: relative; }
+  .header-image figure {
+    width: 100vw;
+    height: 640px;
+    background-repeat: no-repeat;
+    background-size: cover; }
+    @media (max-width: 767px) {
+      .header-image figure {
+        height: 240px; } }
+  .header-image h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: 3;
+    color: #ffffff;
+    width: 100%;
+    padding: 0 5%;
+    text-align: center; }
+
+/*==================================================================================
+  3.0 CONTENT
+==================================================================================*/
+main {
+  margin: 60px auto 0;
+  width: 90%;
+  max-width: 968px; }
+  @media (max-width: 767px) {
+    main {
+      margin-top: 60px; } }

@@ -1,0 +1,108 @@
+/**
+ * Variables
+ */
+
+
+/*=======================================================
+ Table of Contents:
+ –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  1.0 COLORS
+    1.1 COLOR PALETTE
+  2.0 FONTS
+  3.0 spacing
+  4.0 Mixins
+  5.0 HELPERS
+  =======================================================*/
+
+/*==================================================================================
+  1.0 Colors
+==================================================================================*/
+/*===================
+  1.1 Colors Palette
+=====================*/
+
+$magenta: #ec008c;
+$light-gray: #eee;
+$black: #000000;
+$translucent-black: rgba(0, 0, 0, 0.5);
+$white: #ffffff;
+
+/*==================================================================================
+  2.0 Fonts
+==================================================================================*/
+$primary-font: "Galaxie", sans-serif;
+$secondary-font: "HUGEAvantGardeBold", sans-serif;
+
+
+/*==================================================================================
+  3.0 Spacing
+==================================================================================*/
+$breakpoint: 768px;
+$nav_spacing: 24px;
+$header_height__mobile: 60px;
+
+/*==================================================================================
+  4.0 Mixins
+==================================================================================*/
+
+@mixin element_hidden(){
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* BY BREAKPOINTS
+/––––––––––––––––––––––––*/
+@mixin desktop {
+  @media (min-width: #{$breakpoint}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: #{$breakpoint - 1px}) {
+    @content;
+  }
+}
+
+/* ABSOLUTE POSITIONING
+/––––––––––––––––––––––––*/
+
+@mixin absolute_center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+@mixin horizontal_center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+@mixin vertical_center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+
+/*==================================================================================
+  5.0 Helpers
+==================================================================================*/
+.hidden{
+  display: none;
+}
+
+@include desktop {
+  .hidden-desktop{
+    display: none;
+  }
+}
+@include mobile {
+  .hidden-mobile{
+    display: none;
+  }
+}
